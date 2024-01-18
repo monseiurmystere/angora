@@ -3,7 +3,26 @@
     background: #1a1a1a;
 }
 
+    #navigation-link-wrapper {
+        width: 256px !important;
+    }
+
 #brand-wrapper {
-    width: 320px;
+    width: 256px;
     height: 100%;
+}
+
+.text-brand {
+    color: #dfd1bb;
+}
+
+#btn-hamburger-wrapper {
+    margin-top: 24px;
+    margin-inline-start: 18px;
+}
+
+.hamburger-strip {
+    width: 36px;
+    height: 2px;
+    background: white;
 }

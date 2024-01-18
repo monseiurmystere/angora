@@ -1,8 +1,15 @@
 ﻿
 <div id="navigation-wrapper" class="w-100 @ClassCollection">
 	<div id="navigation-link-wrapper" class="d-flex flex-row h-100 w-100 px-0">
-		<div id="brand-wrapper">
-
+		<a class="text-decoration-none" @onclick=@(() => HideSidebar())>
+			<div id="btn-hamburger-wrapper">
+				<div class="hamburger-strip"></div>
+				<div class="hamburger-strip mt-2"></div>
+				<div class="hamburger-strip mt-2"></div>
+			</div>
+		</a>
+		<div id="brand-wrapper" class="d-flex justify-content-start align-items-center">
+			<h2 class="ms-3 mb-0"><span class="fw-lighter text-light">Project</span><span class="text-uppercase text-brand ms-2">&ldquo;Angora&rdquo;</span></h2>
 		</div>
 	</div>
 </div>
@@ -10,5 +17,12 @@
 @code {
 
 	[Parameter] public string ClassCollection { get; set; } = string.Empty;
+
+	[CascadingParameter] public bool SidebarHidden { get; set; } = false;
+
+	private void HideSidebar()
+	{
+		SidebarHidden = !SidebarHidden;
+	}
 
 }

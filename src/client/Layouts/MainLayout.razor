@@ -3,12 +3,23 @@
 
 <div class="container-fluid px-0">
 	<div class="d-flex flex-column">
-		<Navigation />
-		<div id="content-column" class="d-flex flex-row">
-			<Sidebar />
-			<div id="content-view" class="d-flex flex-column">
-				@Body
+		<CascadingValue Value=SidebarHidden>
+			<Navigation />
+			<div id="content-column" class="d-flex flex-row">
+				@if (!SidebarHidden)
+				{
+					<Sidebar />
+				}
+				<div id="content-view" class="d-flex flex-column">
+					@Body
+				</div>
 			</div>
-		</div>
+		</CascadingValue>
 	</div>
 </div>
+
+@code {
+
+	[CascadingParameter] public bool SidebarHidden { get; set; } = false;
+
+}
