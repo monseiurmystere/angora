@@ -1,0 +1,14 @@
+﻿@inherits LayoutComponentBase
+
+
+<div class="container-fluid px-0">
+	<div class="d-flex flex-column">
+		<Navigation />
+		<div id="content-column" class="d-flex flex-row">
+			<Sidebar />
+			<div id="content-view" class="d-flex flex-column">
+				@Body
+			</div>
+		</div>
+	</div>
+</div>

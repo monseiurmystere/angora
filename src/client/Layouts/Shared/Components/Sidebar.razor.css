@@ -1,0 +1,7 @@
+﻿
+[blazor-component-type=sidebar] {
+    width: 256px;
+    height: 100%;
+    background-color: #ECECEC;
+    box-shadow: -2px 0 6px inset #00000025;
+}
