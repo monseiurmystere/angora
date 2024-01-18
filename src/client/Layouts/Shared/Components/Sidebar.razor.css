@@ -5,3 +5,9 @@
     background-color: #ECECEC;
     box-shadow: -2px 0 6px inset #00000025;
 }
+
+.bg-selected {
+    background: linear-gradient(to bottom, #232323, #333333);
+    border-radius: 0.5rem;
+    box-shadow: 0 0 6px #00000025;
+}

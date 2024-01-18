@@ -1,6 +1,7 @@
 ﻿#navigation-wrapper {
     height: 72px;
-    background: #1a1a1a;
+    background: linear-gradient(to bottom, #232323, #333333);
+    box-shadow: 0 0 6px #1A1A1A;
 }
 
     #navigation-link-wrapper {

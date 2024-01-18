@@ -3,12 +3,12 @@
 
 <div class="container-fluid px-0">
 	<div class="d-flex flex-column">
-		<CascadingValue Value=SidebarHidden>
+		<CascadingValue Value=@SidebarHidden>
 			<Navigation />
 			<div id="content-column" class="d-flex flex-row">
 				@if (!SidebarHidden)
 				{
-					<Sidebar />
+					<Sidebar LinkCollection="Links" />
 				}
 				<div id="content-view" class="d-flex flex-column">
 					@Body
@@ -21,5 +21,12 @@
 @code {
 
 	[CascadingParameter] public bool SidebarHidden { get; set; } = false;
+
+	private List<Tuple<string, string>> Links = new List<Tuple<string, string>>
+	{
+		new Tuple<string, string>("Home", ""),
+		new Tuple<string, string>("Help", "/Help"),
+		new Tuple<string, string>("Settings", "/Settings")
+	};
 
 }
