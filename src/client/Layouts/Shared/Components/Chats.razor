@@ -1,15 +1,69 @@
-﻿
+﻿@using com.ashleigh.angora.client.ViewModels
+
 <div blazor-component-type="chat-sel-window" class="d-flex flex-column">
 	<div id="chat-options" class="w-100 d-flex flex-row">
 		<div class="w-75 d-flex flex-column justify-content-center align-items-start">
 			<h5 class="ps-0 mb-0" style="margin-inline-start: 2rem;">Messages</h5>
 		</div>
 		<div class="w-25 d-flex flex-column justify-content-center align-items-end">
-			<h4 class="me-4 mb-0">+</h4>
+			<div id="btn-start-chat" class="me-4">
+				<h4 class="mb-0 text-light">+</h4>
+			</div>
+		</div>	
+	</div>
+	<div blazor-section-type="chat-recipients">
+		<div id="input-msg-search" class="w-100 mt-2 px-2">
+			<input class="form-control w-100" type="text" placeholder="Search" />
 		</div>
+		<ul class="list-group list-group-flush bg-transparent mt-3">
+			@foreach(ContactDisplayViewModel c in MessageList)
+			{
+				<li class="list-group-item">
+					<a>
+						<div class="d-flex flex-row w-100">
+							<div class="d-flex">
+								<div class="pic-circle"></div>
+							</div>
+							<div class="d-flex flex-column ms-3">
+								<h6 class="mb-0">@c.FullName</h6>
+								<p class="mb-0">@(new MarkupString(c.LastMessage))</p>
+								@if (c.LastMessageDelivered)
+								{
+									<p class="fw-bolder">Delivered at @c.LastMessageDeliveredTime?.ToString("HH:mm")</p>
+								}
+								@if (c.LastMessageDelivered && c.LastMessageRead)
+								{
+									<p class="text-notification">Read at @c.LastMessageReadTime?.ToString("HH:mm")</p>
+								}
+							</div>
+						</div>
+					</a>
+				</li>
+			}
+		</ul>
 	</div>
 </div>
 
 @code {
+
+	private List<ContactDisplayViewModel> MessageList => new List<ContactDisplayViewModel>
+	{
+		new ContactDisplayViewModel
+		{
+			FullName = "Lisa Johnson",
+			LastMessage = "Hey :)",
+			LastMessageDelivered = false,
+			LastMessageRead = false
+		},
+		new ContactDisplayViewModel
+		{
+			FullName = "Jason Jackson",
+			LastMessage = "<strong>You</strong>: Are we still on for 2pm today?",
+			LastMessageDelivered = true,
+			LastMessageDeliveredTime = DateTime.Now.AddMinutes(-30d),
+			LastMessageRead = false,
+			LastMessageReadTime = null
+		}
+	};
 
 }
